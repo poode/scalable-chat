@@ -4,21 +4,30 @@ services:
   redis:
     image: "redis"
     ports:
-      - "6379:6379"
+      - "6379:6379" 
 
   balancer:
-    build: ""  #path to balancer
+    build: ./docker_images/Nginx/  
     ports:
       - "3000:80"
     depends_on:
-      - app
+      - app1
+      - app2
     links:
-      - app:app
+      - app1
+      - app2
 
-  app:
-    build: "" #path to web
-    ports:
-      - "3001:3000"
+  app1:
+    build: ./
+    environment:
+      - port=3000
+    depends_on:
+      - redis
+    links:
+      - redis
+
+  app2:
+    build: ./
     environment:
       - port=3000
     depends_on:

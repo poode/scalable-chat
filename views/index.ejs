@@ -36,7 +36,6 @@
         });
 
         stream_socket.on("recieve", (res) => {
-          console.log(res)
             $('#messages').append($('<li>').text(res))
             window.scrollTo(0, document.body.scrollHeight);
         });

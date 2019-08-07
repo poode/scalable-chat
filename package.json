@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-redis" : "docker run -d -ti -p 6379:6379 redis"
+    "start-structure" : "docker-compose up -d",
+    "stop-structure" : "docker-compose down",
+    "rebuild-structure" : "docker-compose build"
   },
   "keywords": [],
   "author": "",
