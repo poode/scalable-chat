@@ -10,24 +10,22 @@ chat.chat(http);
 const bodyParser = require('body-parser');
 app.use(bodyParser.json()); 
 
-
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname, 'views'));
 
 
 /*
 app.use(express.static('public'));
-
-
 */
 
 const room = require("./routes/room")
 
-app.get('/', function(req, res, next){
+app.use('/room',room);
+
+// rest of endpoints
+app.get('*', function(req, res, next){
     next(new Error('Just /room works'));
 })
-
-app.use('/room',room)
 
 //error handler
 app.use(function(err, req, res, next){
