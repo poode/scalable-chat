@@ -1,6 +1,6 @@
 const redis = require('redis');
 const {promisify} = require('util');
-const {ip} = require('./config');
+const {redis_port} = require('./config');
 
 /* Promisify all with bluebird
 const redis = require('redis');
@@ -8,7 +8,7 @@ bluebird.promisifyAll(redis);
 */
 
 const client = redis.createClient({
-                                    host: ip,
+                                    host: "redis",
                                     port: 6379
 });
 

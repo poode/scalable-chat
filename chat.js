@@ -1,7 +1,7 @@
 function chat(http) {
 
     const redis = require('./redis');
-    const {ip} = require('./config');
+    const {redis_port} = require('./config');
 
 
 const colors = [  
@@ -25,7 +25,7 @@ const colors = [
     // socket io config
     const io = require('socket.io')(http);
     const socket_redis = require('socket.io-redis');
-    io.adapter(socket_redis({ host: ip, port: 6379 }));
+    io.adapter(socket_redis({ host: "redis", port: 6379 }));
 
     io.on("connection", (socket) => {
 
